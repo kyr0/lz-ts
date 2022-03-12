@@ -1,9 +1,9 @@
 {
-  "name": "lz-string-ts",
+  "name": "lz-ts",
   "version": "1.0.0",
   "main": "index.js",
   "typings": "dist/index.d.ts",
-  "description": "LZ-based compression algorithm, a TypeScript port of lz-string",
+  "description": "LZ-based compression algorithm for TypeScript projects (Browser, Node.js)",
   "keywords": [
     "lz",
     "compression",
