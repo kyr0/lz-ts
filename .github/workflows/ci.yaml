@@ -1,0 +1,55 @@
+name: Node CI
+
+on: [push,pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - run: yarn
+      - run: yarn test
+  build:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - run: yarn
+      - run: yarn build
+      - name: tar files
+        run: tar -cvf dist.tar dist package.json index.js README.md LICENSE
+      - name: Add artifact to github
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact
+          path: dist.tar
+  npm-publish:
+    needs: [build]
+    name: npm-publish
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: Download build
+        uses: actions/download-artifact@v2
+        with:
+          name: artifact
+      - name: untar files
+        run: tar -xvf dist.tar
+      - name: Publish if version in package.json change
+        uses: springtype-org/github-action-npm-publish@master
+        with:
+          install_build_packages: true
+          project_build_dir: dist
+          create_tag: true
+          auth_token: ${{ secrets.npm_token }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
