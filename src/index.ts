@@ -1,5 +1,29 @@
 const f = String.fromCharCode
 
+const keyStrUriSafe = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-$'
+const baseReverseDic: any = {}
+
+const getBaseValue = (alphabet: string, character: string) => {
+  if (!baseReverseDic[alphabet]) {
+    baseReverseDic[alphabet] = {}
+    for (var i = 0; i < alphabet.length; i++) {
+      baseReverseDic[alphabet][alphabet.charAt(i)] = i
+    }
+  }
+  return baseReverseDic[alphabet][character]
+}
+
+export const compressToURI = (input: string) => {
+  if (input == null) return ''
+  return _compress(input, 6, (a: number) => keyStrUriSafe.charAt(a))
+}
+
+export const decompressFromURI = (input: string) => {
+  if (input == null) return ''
+  input = input.replace(/ /g, '+')
+  return _decompress(input.length, 32, (index: number) => getBaseValue(keyStrUriSafe, input.charAt(index)))
+}
+
 export const compress = (input: string) => {
   if (input == null) return ''
   return JSON.stringify(_compress(input, 15, (a: number) => f(a + 32)) + ' ')
