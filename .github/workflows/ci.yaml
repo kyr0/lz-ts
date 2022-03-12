@@ -9,6 +9,10 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - uses: actions/cache@v2
+        with:
+          path: 'node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}
       - run: yarn
       - run: yarn test
   build:
@@ -19,6 +23,10 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - uses: actions/cache@v2
+        with:
+          path: 'node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}
       - run: yarn
       - run: yarn build
       - name: tar files
