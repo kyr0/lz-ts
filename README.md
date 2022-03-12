@@ -5,12 +5,12 @@ This project is a TypeScript port of `lz-string` using modern tooling.
 
 ## Setup
 
-    yarn add lz-string-ts
+    yarn add lz-ts
 
 ## Usage
 
 ```ts
-import { compress, decompress } from 'ls-string-ts'
+import { compress, decompress } from 'ls-ts'
 
 const compressed = compress('input')
 const decompressed = decompress(compressed)
