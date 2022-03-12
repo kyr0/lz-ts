@@ -1,0 +1,43 @@
+{
+  "name": "lz-string-ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "typings": "dist/index.d.ts",
+  "description": "LZ-based compression algorithm, a TypeScript port of lz-string",
+  "keywords": [
+    "lz",
+    "compression",
+    "string",
+    "typescript",
+    "browser",
+    "Node.js",
+    "UTF16"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "prebuild": "rm -rf dist",
+    "build": "esbuild src/index.ts --format=cjs --bundle --minify --target=chrome58 --outfile=index.js",
+    "postbuild": "tsc",
+    "deploy": "npm pack",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kyr0/lz-string-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kyr0/lz-string-ts/issues"
+  },
+  "author": "Aron Homberg <info@aron-homberg.de>, pieroxy <pieroxy@pieroxy.net>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "@types/node": "^16.11.7",
+    "esbuild": "^0.14.3",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.3",
+    "typescript": "^4.6.2"
+  }
+}

@@ -1,0 +1,10 @@
+src/
+test/
+node_modules/
+.idea/
+.vscode/
+.gitignore
+.editorconfig
+.prettierrc
+jest.config.js
+tsconfig.json
