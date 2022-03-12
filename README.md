@@ -1,7 +1,7 @@
-# lz-string-ts
+# lz-ts
 
 LZ-based compression algorithm for TypeScript projects (Browser, Node.js).
-This project is a TypeScript port of `lz-string` using modern tooling.
+This project is a TypeScript port of the original package `lz-string` using modern tooling.
 
 ## Setup
 
