@@ -2,7 +2,7 @@ name: Node CI
 
 on: [push,pull_request]
 jobs:
-  test:
+  test-and-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,20 +15,6 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}
       - run: yarn
       - run: yarn test
-  build:
-    needs: [test]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - uses: actions/cache@v2
-        with:
-          path: 'node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('yarn.lock') }}
-      - run: yarn
-      - run: yarn build
       - name: tar files
         run: tar -cvf dist.tar dist package.json index.js README.md LICENSE
       - name: Add artifact to github
@@ -37,7 +23,7 @@ jobs:
           name: artifact
           path: dist.tar
   npm-publish:
-    needs: [build]
+    needs: [test-and-build]
     name: npm-publish
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
