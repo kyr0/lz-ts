@@ -6,6 +6,7 @@ This project is a TypeScript port of the original package `lz-string` using mode
 ## Setup
 
     yarn add lz-ts
+    npm i lz-ts
 
 ## Usage
 
