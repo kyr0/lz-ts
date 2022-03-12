@@ -43,7 +43,7 @@ jobs:
         with:
           name: artifact
       - name: untar files
-        run: tar -xvf dist.tar
+        run: mkdir dist && tar -xvf dist.tar -C dist
       - name: Publish if version in package.json change
         uses: springtype-org/github-action-npm-publish@master
         with:
