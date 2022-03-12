@@ -12,7 +12,7 @@ This project is a TypeScript port of the original package `lz-string` using mode
 ### UTF16 encoded string compression
 
 ```ts
-import { compress, decompress } from 'ls-ts'
+import { compress, decompress } from 'lz-ts'
 
 const compressed = compress('input')
 const decompressed = decompress(compressed)
@@ -21,7 +21,7 @@ const decompressed = decompress(compressed)
 ### URI encoded string compression
 
 ```ts
-import { compressToURI, decompressFromURI } from 'ls-ts'
+import { compressToURI, decompressFromURI } from 'lz-ts'
 
 const compressedURI = compressToURI('input')
 const decompressedURI = decompressFromURI(compressed)
