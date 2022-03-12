@@ -1,6 +1,6 @@
 {
   "name": "lz-ts",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "index.js",
   "typings": "dist/index.d.ts",
   "description": "LZ-based compression algorithm for TypeScript projects (Browser, Node.js)",
@@ -26,10 +26,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kyr0/lz-string-ts.git"
+    "url": "https://github.com/kyr0/lz-ts.git"
   },
   "bugs": {
-    "url": "https://github.com/kyr0/lz-string-ts/issues"
+    "url": "https://github.com/kyr0/lz-ts/issues"
   },
   "author": "Aron Homberg <info@aron-homberg.de>, pieroxy <pieroxy@pieroxy.net>",
   "license": "MIT",
